@@ -30,42 +30,42 @@ Library management system
 - add author, books, books-category, and issue book, and return Book request
 <h1>Api Samples</h1>
 
-  Login
+  **Login**
 - URL => '127.0.0.1:8000/api/login',
 - REQUEST_TYPE => 'POST',
 - PARAMETER = 'email' => 'sample@test.com','password' => 'Sample@123'),
 - Response: {"access_token":'sample Token'}
 
-Register
+**Register**
 - URL => '127.0.0.1:8000/api/register',
 - REQUEST_TYPE => 'POST',
 - PARAMETER = 'firstname' => 'sample','lastname' => 'sample surname','email' => 'sample@gmail.com','password' => 'sample@123','gender' => 'm','city' => 'thane','mobile' => '98676573211','age' => '24',
 - Response: "message": "User successfully registered",
 
-Update-Profile
+**Update-Profile**
 - Header Authorization: Bearer <token Sample>  Accept: application/json
 - URL => '127.0.0.1:8000/api/register',
 - REQUEST_TYPE => 'POST',
 - PARAMETER = 'firstname' => 'sample','lastname' => 'sample surname','email' => 'sample@gmail.com','password' => 'sample@123','gender' => 'm','city' => 'thane','mobile' => '98676573211','age' => '24',
 - Response: "message": "User successfully registered",
 
-Refresh
+**Refresh**
 - Header Authorization: Bearer <token Sample>  Accept: application/json
 - URL => '127.0.0.1:8000/api/register',
 - REQUEST_TYPE => 'POST',
-- Response: {"access_token":'sample Token'},
+- Response: {"access_token":'new Token'},
 
-User-Profile
+**User-Profile**
 - Header Authorization: Bearer <token Sample>  Accept: application/json
 - REQUEST_TYPE => 'GET',
 - URL 127.0.0.1:8000/api/auth/user-profile
 
-Logout
+**Logout**
 - Header Authorization: Bearer <token Sample>  Accept: application/json
 - REQUEST_TYPE => 'POST',
 - URL 127.0.0.1:8000/api/auth/logout
 
-Author /Book/ Book/book issued/book category/
+**Author /Book/ Book/book issued/book category/**
 - Header Authorization: Bearer <token Sample>  Accept: application/json
 - REQUEST_TYPE => 'Get',
 - URL 127.0.0.1:8000/api/Author
@@ -74,10 +74,9 @@ Author /Book/ Book/book issued/book category/
   -   '127.0.0.1:8000/api/books-returned',
   -   '127.0.0.1:8000/api/books-category',
   -   '127.0.0.1:8000/api/Author',
-- 
 - Response json with all Admin and User POV
 
-Author /Book/ Book/book issued/book category/ Perticular ID data
+**Author /Book/ Book/book issued/book category/ Perticular ID data**
 - Header Authorization: Bearer <token Sample>  Accept: application/json
 - REQUEST_TYPE => 'Get',
 - URL 127.0.0.1:8000/api/Author/{AuthorId}
@@ -85,11 +84,10 @@ Author /Book/ Book/book issued/book category/ Perticular ID data
     - '127.0.0.1:8000/api/books-issued/{BookID}',  
     - '127.0.0.1:8000/api/books-returned{Book-returendId}',
     - '127.0.0.1:8000/api/books-category{BookCatId}',
-- 
 - Response json with perticular Data Admin and User POV
 
 
-Author /Book/ Book/book issued/book category/ Perticular ID data (Only Admin Can Delete a data)
+**Author /Book/ Book/book issued/book category/ Perticular ID data (Only Admin Can Delete a data)**
 - Header Authorization: Bearer <token Sample>  Accept: application/json
 - REQUEST_TYPE => 'DELETE',
 - URL 127.0.0.1:8000/api/Author/{AuthorId}
@@ -97,73 +95,72 @@ Author /Book/ Book/book issued/book category/ Perticular ID data (Only Admin Can
     - '127.0.0.1:8000/api/books-issued/{BookID}',
     - '127.0.0.1:8000/api/books-returned{Book-returendID}',
     - '127.0.0.1:8000/api/books-category{BookCatID}',
--
 - Response {"message":"Your Data Deleted Successfully"}
 
-Author
+**Author**
 - Header Authorization: Bearer <token Sample>  Accept: application/json
 - URL => '127.0.0.1:8000/api/Author',
 - REQUEST_TYPE => 'POST',
 - PARAMETER = {'name' => 'sample'},
 - Response: "message": "Author Added successfully",
 
-Author
+**Author**
 - Header Authorization: Bearer <token Sample>  Accept: application/json
 - URL => '127.0.0.1:8000/api/Author/{Author}',
 - REQUEST_TYPE => 'PUT/PATCH',
 - PARAMETER = {'name' => 'sample'},
 - Response: "message": "Author Updated successfully",
 
-Book
+**Book**
 - Header Authorization: Bearer <token Sample>  Accept: application/json
 - URL => '127.0.0.1:8000/api/book',
 - REQUEST_TYPE => 'POST',
 - PARAMETER = {'bookTitle' => 'sample',edition => '1', authId => 'Auth ID', catId => 'BookCategoryId', totalAvail => '10', totalIss => '5'},
 - Response: "message": "Book Data Added successfully",
 
-Book
+**Book**
 - Header Authorization: Bearer <token Sample>  Accept: application/json
 - URL => '127.0.0.1:8000/api/book/{book}',
 - REQUEST_TYPE => 'PUT/PATCH',
 - PARAMETER = 'bookTitle' => 'sample','edition' => '1',  authId => 'Auth ID', catId => 'BookCategoryId', 'totalAvail' => '10', 'totalIss' => '5',
 - Response: "message": "Book Data Updated successfully",
 
-Book Issued
+**Book Issued**
 - Header Authorization: Bearer <token Sample>  Accept: application/json
 - URL => '127.0.0.1:8000/api/books-issued',
 - REQUEST_TYPE => 'POST',
 - PARAMETER = 'issueDate' => '2021-12-01','retDate' => '2021-12-10', 'bookId' => 'Book Id', 'memberId' => 'User ID',
 - Response: "message": "Book Issued successfully",
 
-Book Issued
+**Book Issued**
 - Header Authorization: Bearer <token Sample>  Accept: application/json
 - URL => '127.0.0.1:8000/api/books-issued/{books_issued}',
 - REQUEST_TYPE => 'PUT/PATCH',
 - PARAMETER = 'issueDate' => '2021-12-01','retDate' => '2021-12-10', 'bookId' => 'Book ID', 'memberId' => 'User Id',
 - Response: "message": "Book Issued Data Updated successfully",
 
-Book Returned
+**Book Returned**
 - Header Authorization: Bearer <token Sample>  Accept: application/json
 - URL => '127.0.0.1:8000/api/books-returned',
 - REQUEST_TYPE => 'POST',
 - PARAMETER = 'retDate' => '2021-12-10', 'bookId' => 'Book id', 'issuedId' => 'Book issued id','memberId' => 'User ID',
 - Response: "message": "Book Returned Data successfully",
 
-Book Returned
+**Book Returned**
 - Header Authorization: Bearer <token Sample>  Accept: application/json
 - URL => '127.0.0.1:8000/api/books-returned/{books_returned}',
 - REQUEST_TYPE => 'PUT/PATCH',
 - PARAMETER = 'retDate' => '2021-12-10', 'bookId' => 'Book id', 'issuedId' => 'Book issued id','memberId' => 'User ID',
 - Response: "message": "Book Returned Data Updated successfully",
 
-Book Category
+**Book Category**
 - Header Authorization: Bearer <token Sample>  Accept: application/json
 - URL => '127.0.0.1:8000/api/books-category',
 - REQUEST_TYPE => 'POST',
 - PARAMETER = 'catName' => 'test',
 - Response: "message": "Book Category Data Added successfully",
 
-Book Category
+**Book Category**
 - Header Authorization: Bearer <token Sample>  Accept: application/json
 - URL => '127.0.0.1:8000/api/books-category/{books_category}',
 - REQUEST_TYPE => 'PUT/PATCH',
