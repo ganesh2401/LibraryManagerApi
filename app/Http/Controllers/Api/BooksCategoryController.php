@@ -110,7 +110,8 @@ class BooksCategoryController extends Controller
 
         if (Gate::allows('isAdmin')) {
             $book = BooksCatagory::updateOrCreate(['id'=>$id],$request->except('id'));
-            return response()->json($book, 201);
+            return response()->json(['message' => 'Book Category successfully Updated','User'=>$book],201);
+
         }else{
             return unAuthorizedAccess();
         }

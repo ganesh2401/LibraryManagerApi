@@ -34,7 +34,7 @@ Route::group(['middleware' => 'auth.jwt'], function () {
     Route::group(['prefix'=>'auth'], function () {
         Route::post('/refresh',     [AuthController::class, 'refresh']);
         Route::get('/user-profile', [AuthController::class, 'userProfile']);
-        Route::get('/update-profile', [AuthController::class, 'update_profile']);
+        Route::post('/update-profile', [AuthController::class, 'updateProfile']);
         Route::post('logout',       [AuthController::class, 'logout']);
     });
         Route::resource('/book',           BookController::class);

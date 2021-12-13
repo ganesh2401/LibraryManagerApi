@@ -110,7 +110,7 @@ class AuthorController extends Controller
 
         if (Gate::allows('isAdmin')) {
             $book = Author::updateOrCreate(['id'=>$id],$request->except('id'));
-            return response()->json($book, 201);
+            return response()->json(['message' => 'Author data successfully Added','User'=>$book], 201);
         }else{
             return unAuthorizedAccess();
         }

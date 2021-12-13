@@ -28,8 +28,23 @@ Library management system
 - there Authors and and Catgory he only look that data but cant do cud operation on that
 - Admin have full access on this project example
 - add author, books, books-category, and issue book, and return Book request
-- 
-- 
+<h1>Api Samples</h1>
+
+-Login
+URL => '127.0.0.1:8000/api/login',
+REQUEST_TYPE => 'POST',
+PARAMETER = 'email' => 'sample@test.com','password' => 'Sample@123'),
+Response: {"access_token":'sample Token'}
+
+Register
+    URL => '127.0.0.1:8000/api/register',
+    REQUEST_TYPE => 'POST',
+    PARAMETER = 'firstname' => 'sample','lastname' => 'sample surname','email' => 'sample@gmail.com','password' => 'sample@123','gender' => 'm','city' => 'thane','mobile' => '98676573211','age' => '24',
+    Response: "message": "User successfully registered",
+
+
+
+
 
 
 

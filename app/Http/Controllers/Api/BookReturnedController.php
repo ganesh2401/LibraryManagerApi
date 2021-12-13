@@ -131,7 +131,7 @@ class BookReturnedController extends Controller
             $booksIssued->isReturn = 'Y';
             $booksIssued->book->update(['totalAvail'=>DB::raw('totalAvail+1')]);
             $booksIssued->save();
-            return response()->json($book, 201);
+            return response()->json(['message' => 'Book return successfully','User'=>$book],201);
         }else{
             return unAuthorizedAccess();
         }

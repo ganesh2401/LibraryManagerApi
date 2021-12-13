@@ -85,7 +85,7 @@ class AuthController extends Controller
         $validator = Validator::make($request->all(), [
             'firstname' => 'required|string|between:2,100',
             'lastname' => 'required|string|between:2,100',
-            'email' => 'required|string|email|max:100|unique:users',
+            'email' => 'required|string|email|max:100',
             'password' => 'required|string|min:6',
             'mobile'=>'required|numeric|regex:/[0-9]{10}/',
             'age'=>'required|numeric|regex:/[0-9]{2}/',
@@ -101,16 +101,17 @@ class AuthController extends Controller
             $user = User::where('id', 1)->update(array_merge(
                 $validator->validated(),
                 ['password' => bcrypt($request->password)]
-            ))->save();
+            ));
         }else{
-            $user = User::where('id', $request->id)->update(array_merge(
+            $userData = auth()->user();
+            $user = User::where('id', $userData->id)->update(array_merge(
                 $validator->validated(),
                 ['password' => bcrypt($request->password)]
             ));
         }
 
         return response()->json([
-            'message' => 'User successfully registered',
+            'message' => 'User successfully Updated',
             'user' => $user
         ], 201);
     }

@@ -124,7 +124,8 @@ class BookIssuedController extends Controller
                 $bookIssued = BooksIssued::updateOrCreate(['id' => $id], $request->except('id'));
                 $Book->totalAvail = $Book->totalAvail-1;
                 $Book->save();
-                return response()->json($bookIssued, 201);
+                return response()->json(['message' => 'Book issued successfully','User'=>$bookIssued],201);
+
             }
             else{
                 return response()->json(['message' => 'selected are issued or not available '],404);

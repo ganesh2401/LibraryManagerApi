@@ -50,7 +50,7 @@ class BookController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Models\book  $book
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model|\Illuminate\Http\Response|object
      */
     public function show($id)
     {
@@ -111,7 +111,7 @@ class BookController extends Controller
         if (Gate::allows('isAdmin')) {
 
             $book = Book::updateOrCreate(['id'=>$id],$request->except('id'));
-            return response()->json($book, 201);
+            return response()->json(['message' => 'Book data successfully Added','User'=>$book],201);
         }
         else{
             return unAuthorizedAccess();
