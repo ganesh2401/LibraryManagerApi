@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BookRequest;
+use App\Models\Author;
 use App\Models\Book;
 use Exception;
 use Illuminate\Http\Request;
@@ -111,6 +112,8 @@ class BookController extends Controller
         if (Gate::allows('isAdmin')) {
 
             $book = Book::updateOrCreate(['id'=>$id],$request->except('id'));
+            $author = Author::select('*')->where('id',$request->authId)->first();
+            $author->noOfBooksAvail = $author->noOfBooksAvail+1;
             return response()->json(['message' => 'Book data successfully Added','User'=>$book],201);
         }
         else{
