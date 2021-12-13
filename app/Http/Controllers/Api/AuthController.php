@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Validator;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use function PHPUnit\Framework\returnArgument;
@@ -79,6 +80,40 @@ class AuthController extends Controller
         ], 201);
     }
 
+    public function updateProfile(Request $request) {
+
+        $validator = Validator::make($request->all(), [
+            'firstname' => 'required|string|between:2,100',
+            'lastname' => 'required|string|between:2,100',
+            'email' => 'required|string|email|max:100|unique:users',
+            'password' => 'required|string|min:6',
+            'mobile'=>'required|numeric|regex:/[0-9]{10}/',
+            'age'=>'required|numeric|regex:/[0-9]{2}/',
+            'gender'=>'required|in:m,f,o',
+            'city'=>'required|string'
+
+        ]);
+
+        if($validator->fails()){
+            return response()->json($validator->errors()->toJson(), 400);
+        }
+        if (Gate::allows('isAdmin')) {
+            $user = User::where('id', 1)->update(array_merge(
+                $validator->validated(),
+                ['password' => bcrypt($request->password)]
+            ))->save();
+        }else{
+            $user = User::where('id', $request->id)->update(array_merge(
+                $validator->validated(),
+                ['password' => bcrypt($request->password)]
+            ));
+        }
+
+        return response()->json([
+            'message' => 'User successfully registered',
+            'user' => $user
+        ], 201);
+    }
 
     /**
      * Log the user out (Invalidate the token).
