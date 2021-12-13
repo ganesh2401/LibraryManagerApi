@@ -57,10 +57,35 @@ Refresh
 
 User-Profile
 - Header Authorization: Bearer <token Sample>  Accept: application/json
+- REQUEST_TYPE => 'GET',
 - URL 127.0.0.1:8000/api/auth/user-profile
 
 Logout
 - Header Authorization: Bearer <token Sample>  Accept: application/json
+- REQUEST_TYPE => 'POST',
 - URL 127.0.0.1:8000/api/auth/logout
 
+Author /Book/ Book/book issued/book category/
+- Header Authorization: Bearer <token Sample>  Accept: application/json
+- REQUEST_TYPE => 'Get',
+- URL 127.0.0.1:8000/api/Author
+  -  '127.0.0.1:8000/api/book',          
+     '127.0.0.1:8000/api/books-issued',  
+     '127.0.0.1:8000/api/books-returned',
+     '127.0.0.1:8000/api/books-category',
+     '127.0.0.1:8000/api/Author',
+- 
+- Response json with all Admin and User POV
+
+Author /Book/ Book/book issued/book category/ Perticular ID data
+- Header Authorization: Bearer <token Sample>  Accept: application/json
+- REQUEST_TYPE => 'Get',
+- URL 127.0.0.1:8000/api/Author/{AuthorId}
+    -  '127.0.0.1:8000/api/book/{BookID}',          
+       '127.0.0.1:8000/api/books-issued/{BookID}',  
+       '127.0.0.1:8000/api/books-returned{Book-returendID}',
+       '127.0.0.1:8000/api/books-category{BookCatID}',
+       '127.0.0.1:8000/api/Author',
+-
+- Response json with perticular Data Admin and User POV
 
